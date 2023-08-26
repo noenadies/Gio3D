@@ -22,7 +22,7 @@
     <script src="https://cdn.babylonjs.com/serializers/babylonjs.serializers.min.js"></script>
     <script src="https://cdn.babylonjs.com/gui/babylon.gui.min.js"></script>
     <script src="https://cdn.babylonjs.com/inspector/babylon.inspector.bundle.js"></script>
-   
+
     <title>Document</title>
     <style>
         .clbase {
@@ -149,12 +149,12 @@
         #idmenuC a:hover {
             color: #f1f1f1;
         }
+
         #canvasZone {
             width: 100%;
             height: 100%;
             background-color: rgb(212, 145, 0);
         }
-
     </style>
 </head>
 
@@ -171,14 +171,15 @@
         </div>
     </div>
     <script>
-        function fdobleclickCerrar() {
-            $("#idmenuC").addClass("clanimacion1");
-            setTimeout(() => {
-                $("#idmenuC").removeClass("clanimacion1");
-                document.getElementById('idmenuC').style.display = 'none';
-                document.getElementById('idmenopen').style.display = 'flex';
-            }, 1000);
-        }
+        var hdrTexture =null;
+            function fdobleclickCerrar() {
+                $("#idmenuC").addClass("clanimacion1");
+                setTimeout(() => {
+                    $("#idmenuC").removeClass("clanimacion1");
+                    document.getElementById('idmenuC').style.display = 'none';
+                    document.getElementById('idmenopen').style.display = 'flex';
+                }, 1000);
+            }
         function fdobleclickopenmenu() {
             document.getElementById('idmenopen').style.display = 'none';
             document.getElementById('idmenuC').style.display = 'flex';
@@ -228,7 +229,7 @@
 
 
 
-            var hdrTexture = new BABYLON.CubeTexture("./envio1.env", scene);
+            hdrTexture = new BABYLON.CubeTexture("envio1.env", scene);
             scene.createDefaultSkybox(hdrTexture, true, 10000);
             var gl = new BABYLON.GlowLayer("glow", scene);
             gl.intensity = 1.2;
@@ -262,8 +263,8 @@
             return result;
         }
         function addcomponentes() {
-        /*     let st1 = '<div id="inpanelGiovanniBase"></div>';
-            $("body").append(st1); */
+            /*     let st1 = '<div id="inpanelGiovanniBase"></div>';
+                $("body").append(st1); */
             let st2 = '<div id="canvasZone"><canvas id="renderCanvas"></canvas></div>';
             $("#clrenderbase").append(st2);
         }
@@ -272,7 +273,7 @@
         var sceneToRender = null;
         var canvas = null
 
-       
+
         function inifGiovanni() {
 
             addcomponentes();
