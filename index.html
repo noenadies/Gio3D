@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-    <title>Babylon.js sample code</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery.js"></script>
     <!-- Babylon.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.2/dat.gui.min.js"></script>
     <script src="https://assets.babylonjs.com/generated/Assets.js"></script>
@@ -23,35 +22,286 @@
     <script src="https://cdn.babylonjs.com/serializers/babylonjs.serializers.min.js"></script>
     <script src="https://cdn.babylonjs.com/gui/babylon.gui.min.js"></script>
     <script src="https://cdn.babylonjs.com/inspector/babylon.inspector.bundle.js"></script>
-
+   
+    <title>Document</title>
     <style>
-        html,
-        body {
-            overflow: hidden;
+        .clbase {
+            position: absolute;
+            top: 0%;
+            left: 0%;
             width: 100%;
             height: 100%;
-            margin: 0;
-            padding: 0;
+            background-color: blue;
         }
 
-        #renderCanvas {
+        #clrenderbase {
+            position: absolute;
+            top: 0%;
+            left: 0%;
             width: 100%;
             height: 100%;
-            touch-action: none;
+            background-color: rgb(255, 255, 255);
+            z-index: 1;
         }
 
+        #idmenopen {
+            position: absolute;
+            top: 6%;
+            left: 6%;
+            width: 33px;
+            height: 33px;
+            z-index: 22;
+            background-color: rgba(172, 172, 172, 0.227);
+
+            font-size: 33px;
+            display: none;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            text-align: center;
+
+            color: rgba(4, 155, 255, 0.858);
+        }
+
+        #idmenuC {
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 200px;
+            height: 100%;
+            background-color: rgba(121, 121, 121, 0.675);
+            z-index: 3;
+            border: 2px solid #787878;
+            border-radius: 0px 15px 15px 0px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        #idcerrardivmenuC {
+            position: absolute;
+            top: 4%;
+            right: -3%;
+            width: 18px;
+            height: 18px;
+            background-color: rgb(0, 0, 0);
+            z-index: 3;
+            font-size: 14px;
+            color: rgb(255, 255, 255);
+            border-radius: 50%;
+            text-align: center;
+        }
+
+        .clanimacion1 {
+            animation: myAnim 1s ease 0s 1 normal forwards;
+        }
+
+        .clanimacionopenmenu {
+            animation: myAnimopen 1s ease 0s 1 normal forwards;
+        }
+
+
+        @keyframes myAnim {
+            0% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateX(-250px);
+            }
+        }
+
+        @keyframes myAnimopen {
+            0% {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        #idmenuC a {
+            padding: 8px 8px 8px 32px;
+
+            font-size: 25px;
+            color: #818181;
+
+            transition: 0.3s;
+        }
+
+        #idmenuC a:hover {
+            color: #f1f1f1;
+        }
         #canvasZone {
             width: 100%;
             height: 100%;
+            background-color: rgb(212, 145, 0);
         }
+
     </style>
 </head>
 
 <body>
-    <div id="canvasZone"><canvas id="renderCanvas"></canvas></div>
+    <div class="clbase">
+        <div id="idmenopen" onclick="fdobleclickopenmenu()">&#9776;</div>
+        <div id="clrenderbase"></div>
+        <div id="idmenuC">
+            <div id="idcerrardivmenuC" onclick="fdobleclickCerrar()">X</div>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
     <script>
-        alert('nuevo');
-     var _0x3f97=["\x72\x65\x6E\x64\x65\x72\x43\x61\x6E\x76\x61\x73","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x61\x63\x74\x69\x76\x65\x43\x61\x6D\x65\x72\x61","\x72\x65\x6E\x64\x65\x72","\x72\x75\x6E\x52\x65\x6E\x64\x65\x72\x4C\x6F\x6F\x70","\x63\x61\x6D\x65\x72\x61\x31","\x50\x49","\x56\x65\x63\x74\x6F\x72\x33","\x6C\x6F\x77\x65\x72\x52\x61\x64\x69\x75\x73\x4C\x69\x6D\x69\x74","\x75\x70\x70\x65\x72\x52\x61\x64\x69\x75\x73\x4C\x69\x6D\x69\x74","\x73\x65\x74\x54\x61\x72\x67\x65\x74","\x61\x74\x74\x61\x63\x68\x43\x6F\x6E\x74\x72\x6F\x6C","\x6C\x69\x67\x68\x74\x31","\x69\x6E\x74\x65\x6E\x73\x69\x74\x79","\x2E\x2F\x74\x65\x78\x74\x75\x72\x65\x73\x2F\x73\x2E\x65\x6E\x76","\x63\x72\x65\x61\x74\x65\x44\x65\x66\x61\x75\x6C\x74\x53\x6B\x79\x62\x6F\x78","\x67\x6C\x6F\x77","\x69\x6E\x69\x74\x46\x75\x6E\x63\x74\x69\x6F\x6E","\x74\x68\x65\x20\x61\x76\x61\x69\x6C\x61\x62\x6C\x65\x20\x63\x72\x65\x61\x74\x65\x45\x6E\x67\x69\x6E\x65\x20\x66\x75\x6E\x63\x74\x69\x6F\x6E\x20\x66\x61\x69\x6C\x65\x64\x2E\x20\x43\x72\x65\x61\x74\x69\x6E\x67\x20\x74\x68\x65\x20\x64\x65\x66\x61\x75\x6C\x74\x20\x65\x6E\x67\x69\x6E\x65\x20\x69\x6E\x73\x74\x65\x61\x64","\x6C\x6F\x67","\x65\x6E\x67\x69\x6E\x65","\x65\x6E\x67\x69\x6E\x65\x20\x73\x68\x6F\x75\x6C\x64\x20\x6E\x6F\x74\x20\x62\x65\x20\x6E\x75\x6C\x6C\x2E","\x73\x63\x65\x6E\x65","\x74\x68\x65\x6E","\x72\x65\x73\x69\x7A\x65","\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72","","\x2E\x2F","\x68\x65\x6C\x69\x63\x6F\x70\x74\x65\x72\x6F\x2E\x67\x6C\x62","\x53\x63\x65\x6E\x65\x4C\x6F\x61\x64\x65\x72"];var canvas=document[_0x3f97[1]](_0x3f97[0]);var startRenderLoop=function(engine,canvas){engine[_0x3f97[4]](function(){if(sceneToRender&& sceneToRender[_0x3f97[2]]){sceneToRender[_0x3f97[3]]()}})};var engine=null;var scene=null;var sceneToRender=null;var createDefaultEngine=function(){return  new BABYLON.Engine(canvas,true,{preserveDrawingBuffer:true,stencil:true,disableWebGL2Support:false})};var createScene=function(){var scene= new BABYLON.Scene();var _0x7842x8= new BABYLON.ArcRotateCamera(_0x3f97[5],0,Math[_0x3f97[6]]/ 2,5,BABYLON[_0x3f97[7]].Zero(),scene);_0x7842x8[_0x3f97[8]]= 3.9;_0x7842x8[_0x3f97[9]]= 3.9;_0x7842x8[_0x3f97[10]](BABYLON[_0x3f97[7]].Zero());_0x7842x8[_0x3f97[11]](canvas,true);var _0x7842x9= new BABYLON.HemisphericLight(_0x3f97[12], new BABYLON.Vector3(0,1,0),scene);_0x7842x9[_0x3f97[13]]= 0.7;var _0x7842xa= new BABYLON.CubeTexture(_0x3f97[14],scene);scene[_0x3f97[15]](_0x7842xa,true,10000);var _0x7842xb= new BABYLON.GlowLayer(_0x3f97[16],scene);_0x7842xb[_0x3f97[13]]= 1.2;var _0x7842xc=getModel(scene);return scene};window[_0x3f97[17]]= async function(){var _0x7842xd=async function(){try{return createDefaultEngine()}catch(e){console[_0x3f97[19]](_0x3f97[18]);return createDefaultEngine()}};window[_0x3f97[20]]=  await _0x7842xd();if(!engine){throw _0x3f97[21]};startRenderLoop(engine,canvas);window[_0x3f97[22]]= createScene()};initFunction()[_0x3f97[23]](()=>{sceneToRender= scene});window[_0x3f97[25]](_0x3f97[24],function(){engine[_0x3f97[24]]()});async function getModel(scene){const _0x7842xf= await BABYLON[_0x3f97[29]].ImportMeshAsync(_0x3f97[26],_0x3f97[27],_0x3f97[28],scene);return _0x7842xf}
+        function fdobleclickCerrar() {
+            $("#idmenuC").addClass("clanimacion1");
+            setTimeout(() => {
+                $("#idmenuC").removeClass("clanimacion1");
+                document.getElementById('idmenuC').style.display = 'none';
+                document.getElementById('idmenopen').style.display = 'flex';
+            }, 1000);
+        }
+        function fdobleclickopenmenu() {
+            document.getElementById('idmenopen').style.display = 'none';
+            document.getElementById('idmenuC').style.display = 'flex';
+
+            $("#idmenuC").addClass("clanimacionopenmenu");
+            setTimeout(() => {
+                $("#idmenuC").removeClass("clanimacionopenmenu");
+            }, 1000);
+
+        }
+
+
+
+        var startRenderLoop = function (engine, canvas) {
+            engine.runRenderLoop(function () {
+                if (sceneToRender && sceneToRender.activeCamera) {
+                    sceneToRender.render();
+                }
+            });
+        }
+        var createDefaultEngine = function () { return new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true, disableWebGL2Support: false }); };
+        var createScene = function () {
+            var scene = new BABYLON.Scene();
+
+            var camera = new BABYLON.ArcRotateCamera(
+                "camera1",
+                0,
+                Math.PI / 2,
+                5,
+                BABYLON.Vector3.Zero(),
+                scene
+            );
+
+            camera.lowerRadiusLimit = 3.9;
+            camera.upperRadiusLimit = 3.9;
+
+            camera.setTarget(BABYLON.Vector3.Zero());
+
+
+            camera.attachControl(canvas, true);
+
+
+            var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(0, 1, 0), scene);
+
+
+            light.intensity = 0.7;
+
+
+
+            var hdrTexture = new BABYLON.CubeTexture("./envio1.env", scene);
+            scene.createDefaultSkybox(hdrTexture, true, 10000);
+            var gl = new BABYLON.GlowLayer("glow", scene);
+            gl.intensity = 1.2;
+            var he = getModel(scene);
+            return scene;
+        }
+        window.initFunction = async function () {
+
+
+
+            var asyncEngineCreation = async function () {
+                try {
+                    return createDefaultEngine();
+                } catch (e) {
+                    console.log("the available createEngine function failed. Creating the default engine instead");
+                    return createDefaultEngine();
+                }
+            }
+
+            window.engine = await asyncEngineCreation();
+            if (!engine) throw 'engine should not be null.';
+            startRenderLoop(engine, canvas);
+            window.scene = createScene();
+        };
+
+
+
+        async function getModel(scene) {
+            const result = await BABYLON.SceneLoader.ImportMeshAsync('',
+                "./", "helicoptero.glb", scene);
+            return result;
+        }
+        function addcomponentes() {
+        /*     let st1 = '<div id="inpanelGiovanniBase"></div>';
+            $("body").append(st1); */
+            let st2 = '<div id="canvasZone"><canvas id="renderCanvas"></canvas></div>';
+            $("#clrenderbase").append(st2);
+        }
+        var engine = null;
+        var scene = null;
+        var sceneToRender = null;
+        var canvas = null
+
+       
+        function inifGiovanni() {
+
+            addcomponentes();
+            styGiovanni3d();
+            inif3dGiovanni();
+        }
+        function inif3dGiovanni() {
+            canvas = document.getElementById("renderCanvas");
+            initFunction().then(() => {
+                sceneToRender = scene
+            });
+            window.addEventListener("resize", function () {
+                engine.resize();
+            });
+        }
+        function styGiovanni3d() {
+            let st1 = {
+                "position": "absolute",
+                "top": "0%",
+                "left": "0%",
+                "width": "100%",
+                "height": "100%",
+                "background-color": "rgb(0, 0, 0)",
+                "z-index": "6"
+            };
+            $('#inpanelGiovanniBase').css(st1);
+            $('#renderCanvas').css({ "width": "100%", "height": "100%", "touch-action": "none" });
+        }
+        window.onload = inifGiovanni;
     </script>
 </body>
 
