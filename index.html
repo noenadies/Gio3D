@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>Babylon.js sample code</title>
+
+    <!-- Babylon.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.2/dat.gui.min.js"></script>
+    <script src="https://assets.babylonjs.com/generated/Assets.js"></script>
+    <script src="https://cdn.babylonjs.com/recast.js"></script>
+    <script src="https://cdn.babylonjs.com/ammo.js"></script>
+    <script src="https://cdn.babylonjs.com/havok/HavokPhysics_umd.js"></script>
+    <script src="https://cdn.babylonjs.com/cannon.js"></script>
+    <script src="https://cdn.babylonjs.com/Oimo.js"></script>
+    <script src="https://cdn.babylonjs.com/earcut.min.js"></script>
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script>
+    <script src="https://cdn.babylonjs.com/proceduralTexturesLibrary/babylonjs.proceduralTextures.min.js"></script>
+    <script src="https://cdn.babylonjs.com/postProcessesLibrary/babylonjs.postProcess.min.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.js"></script>
+    <script src="https://cdn.babylonjs.com/serializers/babylonjs.serializers.min.js"></script>
+    <script src="https://cdn.babylonjs.com/gui/babylon.gui.min.js"></script>
+    <script src="https://cdn.babylonjs.com/inspector/babylon.inspector.bundle.js"></script>
+
+    <style>
+        html,
+        body {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #renderCanvas {
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+        }
+
+        #canvasZone {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="canvasZone"><canvas id="renderCanvas"></canvas></div>
+    <script>
+     var _0xc1ba=["\x31\x30\x76\x47\x49\x42\x68\x65","\x32\x33\x77\x47\x57\x7A\x4C\x72","\x69\x6E\x69\x74\x46\x75\x6E\x63\x74\x69\x6F\x6E","\x34\x34\x34\x36\x34\x34\x34\x54\x44\x54\x57\x70\x6A","\x33\x30\x36\x35\x37\x31\x38\x61\x6F\x72\x44\x77\x55","\x56\x65\x63\x74\x6F\x72\x33","\x68\x65\x6C\x69\x63\x6F\x70\x74\x65\x72\x6F\x2E\x67\x6C\x62","\x47\x6C\x6F\x77\x4C\x61\x79\x65\x72","\x69\x6E\x74\x65\x6E\x73\x69\x74\x79","\x41\x72\x63\x52\x6F\x74\x61\x74\x65\x43\x61\x6D\x65\x72\x61","\x53\x63\x65\x6E\x65\x4C\x6F\x61\x64\x65\x72","\x37\x67\x6F\x70\x4D\x77\x77","\x65\x6E\x67\x69\x6E\x65","\x38\x33\x39\x38\x38\x55\x54\x41\x54\x54\x4A","\x73\x63\x65\x6E\x65","\x53\x63\x65\x6E\x65","\x72\x65\x6E\x64\x65\x72\x43\x61\x6E\x76\x61\x73","\x2F\x74\x65\x78\x74\x75\x72\x65\x73\x2F\x73\x2E\x65\x6E\x76","\x63\x72\x65\x61\x74\x65\x44\x65\x66\x61\x75\x6C\x74\x53\x6B\x79\x62\x6F\x78","\x6C\x69\x67\x68\x74\x31","\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72","\x61\x74\x74\x61\x63\x68\x43\x6F\x6E\x74\x72\x6F\x6C","\x31\x38\x36\x34\x39\x37\x36\x33\x67\x75\x68\x4D\x4A\x56","\x6C\x6F\x77\x65\x72\x52\x61\x64\x69\x75\x73\x4C\x69\x6D\x69\x74","\x72\x65\x73\x69\x7A\x65","\x35\x38\x36\x34\x38\x32\x33\x73\x65\x61\x56\x4F\x78","\x63\x61\x6D\x65\x72\x61\x31","\x45\x6E\x67\x69\x6E\x65","\x5A\x65\x72\x6F","\x32\x31\x34\x37\x36\x38\x51\x6C\x4E\x53\x42\x76","\x75\x70\x70\x65\x72\x52\x61\x64\x69\x75\x73\x4C\x69\x6D\x69\x74","\x6C\x6F\x67","\x32\x30\x4A\x4C\x68\x6D\x55\x43","\x43\x75\x62\x65\x54\x65\x78\x74\x75\x72\x65","\x31\x30\x31\x37\x36\x35\x30\x47\x56\x46\x72\x73\x59","\x67\x6C\x6F\x77","\x61\x63\x74\x69\x76\x65\x43\x61\x6D\x65\x72\x61","\x72\x75\x6E\x52\x65\x6E\x64\x65\x72\x4C\x6F\x6F\x70","\x49\x6D\x70\x6F\x72\x74\x4D\x65\x73\x68\x41\x73\x79\x6E\x63","\x72\x65\x6E\x64\x65\x72","\x73\x68\x69\x66\x74","\x70\x75\x73\x68","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x50\x49","\x73\x65\x74\x54\x61\x72\x67\x65\x74","\x48\x65\x6D\x69\x73\x70\x68\x65\x72\x69\x63\x4C\x69\x67\x68\x74","\x74\x68\x65\x20\x61\x76\x61\x69\x6C\x61\x62\x6C\x65\x20\x63\x72\x65\x61\x74\x65\x45\x6E\x67\x69\x6E\x65\x20\x66\x75\x6E\x63\x74\x69\x6F\x6E\x20\x66\x61\x69\x6C\x65\x64\x2E\x20\x43\x72\x65\x61\x74\x69\x6E\x67\x20\x74\x68\x65\x20\x64\x65\x66\x61\x75\x6C\x74\x20\x65\x6E\x67\x69\x6E\x65\x20\x69\x6E\x73\x74\x65\x61\x64","\x65\x6E\x67\x69\x6E\x65\x20\x73\x68\x6F\x75\x6C\x64\x20\x6E\x6F\x74\x20\x62\x65\x20\x6E\x75\x6C\x6C\x2E","\x74\x68\x65\x6E","","\x2E\x2F"];var _0x3a96e5=_0x2eda;function _0x42c0(){var _0x2f00x3=[_0xc1ba[0],_0xc1ba[1],_0xc1ba[2],_0xc1ba[3],_0xc1ba[4],_0xc1ba[5],_0xc1ba[6],_0xc1ba[7],_0xc1ba[8],_0xc1ba[9],_0xc1ba[10],_0xc1ba[11],_0xc1ba[12],_0xc1ba[13],_0xc1ba[14],_0xc1ba[15],_0xc1ba[16],_0xc1ba[17],_0xc1ba[18],_0xc1ba[19],_0xc1ba[20],_0xc1ba[21],_0xc1ba[22],_0xc1ba[23],_0xc1ba[24],_0xc1ba[25],_0xc1ba[26],_0xc1ba[27],_0xc1ba[28],_0xc1ba[29],_0xc1ba[30],_0xc1ba[31],_0xc1ba[32],_0xc1ba[33],_0xc1ba[34],_0xc1ba[35],_0xc1ba[36],_0xc1ba[37],_0xc1ba[38],_0xc1ba[39]];_0x42c0= function(){return _0x2f00x3};return _0x42c0()}(function(_0x2f00x4,_0x2f00x5){var _0x2f00x6=_0x2eda,_0x2f00x7=_0x2f00x4();while(!![]){try{var _0x2f00x8=-parseInt(_0x2f00x6(0xec))/ 0x1 * (-parseInt(_0x2f00x6(0xd0))/ 0x2) + -parseInt(_0x2f00x6(0xef))/ 0x3 + -parseInt(_0x2f00x6(0xe3))/ 0x4 * (parseInt(_0x2f00x6(0xe5))/ 0x5) + -parseInt(_0x2f00x6(0xee))/ 0x6 * (parseInt(_0x2f00x6(0xce))/ 0x7) + parseInt(_0x2f00x6(0xe0))/ 0x8 + parseInt(_0x2f00x6(0xdc))/ 0x9 + parseInt(_0x2f00x6(0xeb))/ 0xa* (parseInt(_0x2f00x6(0xd9))/ 0xb);if(_0x2f00x8=== _0x2f00x5){break}else {_0x2f00x7[_0xc1ba[41]](_0x2f00x7[_0xc1ba[40]]())}}catch(_0xc21359){_0x2f00x7[_0xc1ba[41]](_0x2f00x7[_0xc1ba[40]]())}}}(_0x42c0,0x88836));var canvas=document[_0xc1ba[42]](_0x3a96e5(0xd3)),startRenderLoop=function(_0x2f00x10,_0x2f00x11){var _0x2f00x12=_0x3a96e5;_0x2f00x10[_0x2f00x12(0xe8)](function(){var _0x2f00x13=_0x2f00x12;sceneToRender&& sceneToRender[_0x2f00x13(0xe7)]&& sceneToRender[_0x2f00x13(0xea)]()})},engine=null,scene=null,sceneToRender=null,createDefaultEngine=function(){var _0x2f00x14=_0x3a96e5;return  new BABYLON[(_0x2f00x14(0xde))](canvas,!![],{'\x70\x72\x65\x73\x65\x72\x76\x65\x44\x72\x61\x77\x69\x6E\x67\x42\x75\x66\x66\x65\x72':!![],'\x73\x74\x65\x6E\x63\x69\x6C':!![],'\x64\x69\x73\x61\x62\x6C\x65\x57\x65\x62\x47\x4C\x32\x53\x75\x70\x70\x6F\x72\x74':![]})},createScene=function(){var _0x2f00x15=_0x3a96e5,_0x2f00x16= new BABYLON[(_0x2f00x15(0xd2))](),_0x2f00x17= new BABYLON[(_0x2f00x15(0xf4))](_0x2f00x15(0xdd),0x0,Math[_0xc1ba[43]]/ 0x2,0x5,BABYLON[_0xc1ba[5]][_0x2f00x15(0xdf)](),_0x2f00x16);_0x2f00x17[_0x2f00x15(0xda)]= 3.9,_0x2f00x17[_0x2f00x15(0xe1)]= 3.9,_0x2f00x17[_0xc1ba[44]](BABYLON[_0x2f00x15(0xf0)][_0xc1ba[28]]()),_0x2f00x17[_0x2f00x15(0xd8)](canvas,!![]);var _0x2f00x18= new BABYLON[_0xc1ba[45]](_0x2f00x15(0xd6), new BABYLON[(_0x2f00x15(0xf0))](0x0,0x1,0x0),_0x2f00x16);_0x2f00x18[_0x2f00x15(0xf3)]= 0.7;var _0x2f00x19= new BABYLON[(_0x2f00x15(0xe4))](_0x2f00x15(0xd4),_0x2f00x16);_0x2f00x16[_0x2f00x15(0xd5)](_0x2f00x19,!![],0x2710);var _0x2f00x1a= new BABYLON[(_0x2f00x15(0xf2))](_0x2f00x15(0xe6),_0x2f00x16);_0x2f00x1a[_0x2f00x15(0xf3)]= 1.2;var _0x2f00x1b=getModel(_0x2f00x16);return _0x2f00x16};window[_0x3a96e5(0xed)]= async function(){var _0x2f00x1c=_0x3a96e5,_0x2f00x1d=async function(){var _0x2f00x1e=_0x2eda;try{return createDefaultEngine()}catch(_0x4fb02c){return console[_0x2f00x1e(0xe2)](_0xc1ba[46]),createDefaultEngine()}};window[_0x2f00x1c(0xcf)]=  await _0x2f00x1d();if(!engine){throw _0xc1ba[47]};startRenderLoop(engine,canvas),window[_0x2f00x1c(0xd1)]= createScene()},initFunction()[_0xc1ba[48]](()=>{sceneToRender= scene}),window[_0x3a96e5(0xd7)](_0x3a96e5(0xdb),function(){var _0x2f00x1f=_0x3a96e5;engine[_0x2f00x1f(0xdb)]()});function _0x2eda(_0x2f00x21,_0x2f00x22){var _0x2f00x23=_0x42c0();return _0x2eda= function(_0x2f00x24,_0x2f00x25){_0x2f00x24= _0x2f00x24- 0xce;var _0x2f00x26=_0x2f00x23[_0x2f00x24];return _0x2f00x26},_0x2eda(_0x2f00x21,_0x2f00x22)}async function getModel(_0x2f00x28){var _0x2f00x29=_0x3a96e5;const _0x2f00x2a= await BABYLON[_0x2f00x29(0xf5)][_0x2f00x29(0xe9)](_0xc1ba[49],_0xc1ba[50],_0x2f00x29(0xf1),_0x2f00x28);return _0x2f00x2a}
+    </script>
+</body>
+
+</html>
